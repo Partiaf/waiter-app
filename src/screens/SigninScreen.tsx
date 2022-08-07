@@ -13,7 +13,7 @@ export const SigninScreen: React.FunctionComponent<ISigninScreenProps> = (
 
 
   const sendRequest = async() => {
-    axios.post("http://partiaf-api-recache.herokuapp.com/api/v2/signin-waiter", {code}).then((response) => {
+    axios.post("https://partiaf-api-recache.herokuapp.com/api/v2/signin-waiter", {code}).then((response) => {
     localStorage.setItem("storeInfo", JSON.stringify(response.data));  
     setEnter(true)
     });
