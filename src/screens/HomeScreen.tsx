@@ -86,7 +86,7 @@ const HomeScreen = () => {
 
             <QrReader
                 scanDelay={300}
-                constraints={{ facingMode: 'user' }}
+                constraints={{ facingMode: "environment" }}
                 onResult={(result: any, error) => {
                     if (!!result) {
                         setQrdata(result?.text);
