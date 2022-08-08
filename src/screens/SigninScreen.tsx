@@ -32,10 +32,10 @@ export const SigninScreen: React.FunctionComponent<ISigninScreenProps> = (
       <div className="home-container">
         <img
           className="logo"
-          src="./img/logo/logo-partiaf-secondary.svg"
+          src="./logo-partiaf-secondary.svg"
           alt=""
         />
-        <p className="login-copy">Fiestas y mas.</p>
+        {/* <p className="login-copy">Staff</p> */}
         {/* <img className='user-img' src="./img/user-avatar-filled.svg" alt="" /> */}
         <form action="" autoComplete="off">
           <div className="input-form">
