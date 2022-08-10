@@ -66,6 +66,11 @@ const HomeScreen = () => {
         // console.log(covers)
     }
 
+    const handleScan = (data:any) => {
+        if(data){
+            setQrdata(data)
+        }
+    }
     useEffect(() => {
         getStores();
     }, [])
