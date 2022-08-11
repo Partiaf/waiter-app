@@ -95,7 +95,8 @@ const HomeScreen = () => {
     const handleScanWebCam = (result: any) => {
         if (result) {
             setScanResultWebCam(result);
-            alert(JSON.parse(`[${result}]`)[0]);
+            const obj = JSON.parse(result); 
+            alert(obj);
         }
     }
 
