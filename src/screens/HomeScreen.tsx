@@ -99,9 +99,6 @@ const HomeScreen = () => {
             const obj = JSON.parse(result); 
             setScanResultWebCam(obj);
 
-            // alert(...obj);
-            // alert(`Nombre del Evento: ${obj.eventName} - Nombre del cliente: ${obj.name} - Asistentes: ${obj.people}`);
-
             swal({
                 title: "Acceso Permitido",
                 text: `Nombre del Evento: ${obj.eventName} - Nombre del cliente: ${obj.name} - Asistentes: ${obj.people} `, 
@@ -127,7 +124,7 @@ const HomeScreen = () => {
                 <QrReader
                     ref={qrRef}
                     delay={300}
-                    style={{ width: '100%' }}
+                    style={{ width: '100%', color: "#EBC74E" }}
                     onError={handleErrorWebCam}
                     onScan={handleScanWebCam}
                 />
