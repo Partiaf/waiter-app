@@ -95,6 +95,7 @@ const HomeScreen = () => {
       const handleScanWebCam = (result:any) => {
         if (result){
             setScanResultWebCam(result);
+            alert(result)
         }
        }
 
@@ -112,16 +113,16 @@ const HomeScreen = () => {
       </header>
 
             {open && (
-
-            <QrReader 
-                ref={qrRef}
-                delay={300}
-                style={{width: '100%'}}
-                onError= {handleErrorWebCam}
-                onScan={handleScanWebCam}
-            />
+                <QrReader 
+                    ref={qrRef}
+                    delay={300}
+                    style={{width: '100%'}}
+                    onError= {handleErrorWebCam}
+                    onScan={handleScanWebCam}
+                />
             )}
 
+            Scanned Code: {scanResultWebCam}
 
             
             <h2 className="store-title">{store.name}</h2>
