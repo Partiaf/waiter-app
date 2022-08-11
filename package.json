@@ -13,6 +13,7 @@
     "react-dom": "^18.0.0",
     "react-qr-reader": "^2.2.1",
     "react-router-dom": "^6.3.0",
+    "sweetalert": "^2.1.2",
     "vite-plugin-pwa": "^0.12.0",
     "vite-tsconfig-paths": "^3.5.0"
   },

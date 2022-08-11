@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { useState } from "react"
 // import { QrReader } from 'react-qr-reader'
 import QrReader from 'react-qr-reader';
+import swal from "sweetalert";
 const data = [
     {
         photo: "/user.jpeg",
@@ -96,8 +97,17 @@ const HomeScreen = () => {
         if (result) {
             setScanResultWebCam(result);
             const obj = JSON.parse(result); 
+            setScanResultWebCam(obj);
+
             alert(...obj);
             alert(obj.name);
+
+            swal({
+                title: "Acceso Permitido",
+                text: `Nombre del Evento: ${obj.eventName} - Nombre del cliente: ${obj.name} - Asistentes: ${obj.people} `, 
+                icon: "success"
+            });
+
         }
     }
 
@@ -124,7 +134,7 @@ const HomeScreen = () => {
             )}
 
             
-            {/* Scanned Code: {JSON.parse(scanResultWebCam)[0]} */}
+            Scanned Code: {scanResultWebCam}
 
 
             <h2 className="store-title">{store.name}</h2>
