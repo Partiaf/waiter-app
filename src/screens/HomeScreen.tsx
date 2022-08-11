@@ -96,14 +96,24 @@ const HomeScreen = () => {
     const handleScanWebCam = (result: any) => {
         if (result) {
             setScanResultWebCam(result);
-            const obj = JSON.parse(result); 
+            const obj = JSON.parse(result);
             setScanResultWebCam(obj);
+            if (!obj.eventName) {
+                swal({
+                    title: "QR no valido",
+                    text: `Intenta de nuevo o verifica que estas en la aplicacion correcta `,
+                    icon: "error"
+                });
+            } else if (obj.eventName && obj.state == "accepted") {
+                swal({
+                    title: "Acceso Permitido",
+                    text: `Nombre del Evento: ${obj.eventName} - Nombre del cliente: ${obj.name} - Asistentes: ${obj.people} `,
+                    icon: "success"
+                });
+            }else{
+                
+            }
 
-            swal({
-                title: "Acceso Permitido",
-                text: `Nombre del Evento: ${obj.eventName} - Nombre del cliente: ${obj.name} - Asistentes: ${obj.people} `, 
-                icon: "success"
-            });
 
         }
     }
@@ -124,13 +134,13 @@ const HomeScreen = () => {
                 <QrReader
                     ref={qrRef}
                     delay={300}
-                    style={{ width: '100%', color: "#EBC74E"}}
+                    style={{ width: '100%', color: "#EBC74E" }}
                     onError={handleErrorWebCam}
                     onScan={handleScanWebCam}
                 />
             )}
 
-            
+
             {/* Scanned Code: {scanResultWebCam} */}
 
 
