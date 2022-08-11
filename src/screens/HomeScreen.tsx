@@ -100,7 +100,7 @@ const HomeScreen = () => {
             setScanResultWebCam(obj);
 
             // alert(...obj);
-            alert(`Nombre del Evento: ${obj.eventName} - Nombre del cliente: ${obj.name} - Asistentes: ${obj.people}`);
+            // alert(`Nombre del Evento: ${obj.eventName} - Nombre del cliente: ${obj.name} - Asistentes: ${obj.people}`);
 
             swal({
                 title: "Acceso Permitido",
