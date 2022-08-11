@@ -105,14 +105,18 @@ const HomeScreen = () => {
                     icon: "error"
                 });
             } else if (obj.eventName && obj.state == "accepted") {
+                sendRequest(obj.user, obj.id)
                 swal({
                     title: "Acceso Permitido",
                     text: `Nombre del Evento: ${obj.eventName} - Nombre del cliente: ${obj.name} - Asistentes: ${obj.people} `,
                     icon: "success"
                 });
-                sendRequest(obj.user, obj.id)
             }else{
-                
+                swal({
+                    title: "Acceso Denegado",
+                    text: `El QR ya ha sido usado `,
+                    icon: "warning"
+                });
             }
 
 
@@ -126,6 +130,7 @@ const HomeScreen = () => {
     const sendRequest = async (userId: string, coverId: string) => {
         setLoading(true)
         axios.post("https://partiaf-api-recache.herokuapp.com/api/v2/update-user", { userId, coverId }).then((response) => {
+            console.log(response)
           setLoading(false)
         });
     }
