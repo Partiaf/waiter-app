@@ -1,9 +1,9 @@
 import Header from "@/components/Header"
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useState } from "react"
-import { QrReader } from 'react-qr-reader'
-
+// import { QrReader } from 'react-qr-reader'
+import QrReader from 'react-qr-reader';
 const data = [
     {
         photo: "/user.jpeg",
@@ -50,6 +50,7 @@ const HomeScreen = () => {
     const [stores, setStores] = useState();
     const [covers, setCovers] = useState<Cover[]>([]);
 
+    
     const [open, setOpen] = useState(false)
 
     const store = JSON.parse(localStorage.getItem('storeInfo') || "");
@@ -66,14 +67,37 @@ const HomeScreen = () => {
         // console.log(covers)
     }
 
-    const handleScan = (data:any) => {
-        if(data){
-            setQrdata(data)
-        }
-    }
+
     useEffect(() => {
         getStores();
     }, [])
+
+    const [text, setText] = useState();
+    const [imageUrl, setImageUrl] = useState();
+    const [scanResultFile, setScanResultFile] = useState('');
+    const [scanResultWebCam, setScanResultWebCam] =  useState('');
+    const qrRef = useRef<any>(null);
+ 
+    const handleErrorFile = (error:any) => {
+        console.log(error);
+      }
+      const handleScanFile = (result:any) => {
+          if (result) {
+              setScanResultFile(result);
+          }
+      }
+      const onScanFile = () => {
+        qrRef?.current?.openImageDialog();
+      }
+      const handleErrorWebCam = (error:any) => {
+        console.log(error);
+      }
+      const handleScanWebCam = (result:any) => {
+        if (result){
+            setScanResultWebCam(result);
+        }
+       }
+
 
     return (
         <>
@@ -89,19 +113,12 @@ const HomeScreen = () => {
 
             {open && (
 
-            <QrReader
-                scanDelay={300}
-                constraints={{ facingMode: "environment" }}
-                onResult={(result: any, error) => {
-                    if (!!result) {
-                        setQrdata(result?.text);
-                    }
-
-                    if (!!error) {
-                        console.info(error);
-                    }
-                }}
-                containerStyle={{ height: 240, width: 320 }}
+            <QrReader 
+                ref={qrRef}
+                delay={300}
+                style={{width: '100%'}}
+                onError= {handleErrorWebCam}
+                onScan={handleScanWebCam}
             />
             )}
 
