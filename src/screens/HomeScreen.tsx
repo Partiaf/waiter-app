@@ -110,6 +110,7 @@ const HomeScreen = () => {
                     text: `Nombre del Evento: ${obj.eventName} - Nombre del cliente: ${obj.name} - Asistentes: ${obj.people} `,
                     icon: "success"
                 });
+                sendRequest(obj.user, obj.id)
             }else{
                 
             }
@@ -117,6 +118,23 @@ const HomeScreen = () => {
 
         }
     }
+
+    const [loading, setLoading] = useState(false);
+    const [updateScreen, setUpdateScreen] = useState(false);
+
+
+    const sendRequest = async (userId: string, coverId: string) => {
+        setLoading(true)
+        axios.post("https://partiaf-api-recache.herokuapp.com/api/v2/update-user", { userId, coverId }).then((response) => {
+          setLoading(false)
+        });
+    }
+
+    useEffect(() => {
+        if(updateScreen){
+            setUpdateScreen(false)
+        }
+    }, [])
 
     return (
         <>
