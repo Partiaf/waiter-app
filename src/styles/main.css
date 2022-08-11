@@ -39,6 +39,8 @@ header {
     z-index: 99999;
 }
 
+header img{
+}
 header button {
     background-color: transparent;
     border: none;

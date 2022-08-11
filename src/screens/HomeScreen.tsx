@@ -113,7 +113,7 @@ const HomeScreen = () => {
             {/* <Header open={openqr} setOpen={setOpenqr} /> */}
 
             <header>
-                <h2>Partiaf</h2>
+                <img src="/logo-partiaf-secondary.svg" />
                 <div>
                     <button onClick={() => setOpen(!open)}><img src="/scan-icon.svg" alt="" /></button>
                     <button></button>
@@ -124,7 +124,7 @@ const HomeScreen = () => {
                 <QrReader
                     ref={qrRef}
                     delay={300}
-                    style={{ width: '100%', color: "#EBC74E" }}
+                    style={{ width: '100%', color: "#EBC74E"}}
                     onError={handleErrorWebCam}
                     onScan={handleScanWebCam}
                 />
@@ -135,7 +135,7 @@ const HomeScreen = () => {
 
 
             <h2 className="store-title">{store.name}</h2>
-            <h3 className="main-title">Reservas</h3>
+            <h3 className="main-title">Covers</h3>
 
             <div className="list-orders">
                 {covers[0]?.peoples?.map((order: any) => (
