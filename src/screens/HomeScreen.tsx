@@ -50,15 +50,15 @@ const HomeScreen = () => {
     const [stores, setStores] = useState();
     const [covers, setCovers] = useState<Cover[]>([]);
 
-    
+
     const [open, setOpen] = useState(false)
 
     const store = JSON.parse(localStorage.getItem('storeInfo') || "");
 
-    const getStores = async() => {
+    const getStores = async () => {
         const data = axios.get('https://partiaf-api-recache.herokuapp.com/api/v2/stores').then((response) => {
-        setStores(response.data);
-              axios.get(`https://partiaf-api-recache.herokuapp.com/api/v2/covers/${store._id}`).then((response) => {
+            setStores(response.data);
+            axios.get(`https://partiaf-api-recache.herokuapp.com/api/v2/covers/${store._id}`).then((response) => {
                 setCovers(response.data)
                 console.log(response.data)
             });
@@ -75,76 +75,78 @@ const HomeScreen = () => {
     const [text, setText] = useState();
     const [imageUrl, setImageUrl] = useState();
     const [scanResultFile, setScanResultFile] = useState('');
-    const [scanResultWebCam, setScanResultWebCam] =  useState('');
+    const [scanResultWebCam, setScanResultWebCam] = useState('');
     const qrRef = useRef<any>(null);
- 
-    const handleErrorFile = (error:any) => {
-        console.log(error);
-      }
-      const handleScanFile = (result:any) => {
-          if (result) {
-              setScanResultFile(result);
-          }
-      }
-      const onScanFile = () => {
-        qrRef?.current?.openImageDialog();
-      }
-      const handleErrorWebCam = (error:any) => {
-        console.log(error);
-      }
-      const handleScanWebCam = (result:any) => {
-        if (result){
-            setScanResultWebCam(result);
-            alert(JSON.parse(result[0]))
-        }
-       }
 
+    const handleErrorFile = (error: any) => {
+        console.log(error);
+    }
+    const handleScanFile = (result: any) => {
+        if (result) {
+            setScanResultFile(result);
+        }
+    }
+    const onScanFile = () => {
+        qrRef?.current?.openImageDialog();
+    }
+    const handleErrorWebCam = (error: any) => {
+        console.log(error);
+    }
+    const handleScanWebCam = (result: any) => {
+        if (result) {
+            setScanResultWebCam(result);
+            if(JSON.parse(result[0])){
+                alert(JSON.parse(result[0]));
+            }
+        }
+    }
 
     return (
         <>
             {/* <Header open={openqr} setOpen={setOpenqr} /> */}
 
             <header>
-        <h2>Partiaf</h2>
-        <div>
-            <button onClick={() => setOpen(!open)}><img src="/scan-icon.svg" alt="" /></button>
-            <button></button>
-        </div>
-      </header>
+                <h2>Partiaf</h2>
+                <div>
+                    <button onClick={() => setOpen(!open)}><img src="/scan-icon.svg" alt="" /></button>
+                    <button></button>
+                </div>
+            </header>
 
             {open && (
-                <QrReader 
+                <QrReader
                     ref={qrRef}
                     delay={300}
-                    style={{width: '100%'}}
-                    onError= {handleErrorWebCam}
+                    style={{ width: '100%' }}
+                    onError={handleErrorWebCam}
                     onScan={handleScanWebCam}
                 />
             )}
 
-            Scanned Code: {JSON.parse(scanResultWebCam[0])}
-
             
+            Scanned Code: {JSON.parse(scanResultWebCam)}
+
+
             <h2 className="store-title">{store.name}</h2>
             <h3 className="main-title">Reservas</h3>
 
             <div className="list-orders">
-                {covers[0]?.peoples?.map((order:any) => (
+                {covers[0]?.peoples?.map((order: any) => (
                     <div className="order-card" key={order.username}>
-                    <div>
-                    <img src="/profile.png" alt="" />
-                    <div>
-                        <h4>{order.name}</h4>
-                        <p>Midnigth, Medellin</p>
-                    </div>
-                    </div>
+                        <div>
+                            <img src="/profile.png" alt="" />
+                            <div>
+                                <h4>{order.name}</h4>
+                                <p>Midnigth, Medellin</p>
+                            </div>
+                        </div>
 
-                    <div className={order.state == "accepted"? "success": "danger"}>
+                        <div className={order.state == "accepted" ? "success" : "danger"}>
 
+                        </div>
                     </div>
-                </div>
                 ))}
-                      
+
             </div>
         </>
     )
