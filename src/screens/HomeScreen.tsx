@@ -99,8 +99,8 @@ const HomeScreen = () => {
             const obj = JSON.parse(result); 
             setScanResultWebCam(obj);
 
-            alert(...obj);
-            alert(obj.name);
+            // alert(...obj);
+            alert(`Nombre del Evento: ${obj.eventName} - Nombre del cliente: ${obj.name} - Asistentes: ${obj.people}`);
 
             swal({
                 title: "Acceso Permitido",
@@ -134,7 +134,7 @@ const HomeScreen = () => {
             )}
 
             
-            Scanned Code: {scanResultWebCam}
+            {/* Scanned Code: {scanResultWebCam} */}
 
 
             <h2 className="store-title">{store.name}</h2>
