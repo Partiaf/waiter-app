@@ -122,7 +122,7 @@ const HomeScreen = () => {
             )}
 
             
-            Scanned Code: {JSON.parse(scanResultWebCam)[0]}
+            {/* Scanned Code: {JSON.parse(scanResultWebCam)[0]} */}
 
 
             <h2 className="store-title">{store.name}</h2>
