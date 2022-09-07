@@ -98,17 +98,17 @@ const HomeScreen = () => {
             setScanResultWebCam(result);
             const obj = JSON.parse(result);
             setScanResultWebCam(obj);
-            if (!obj.eventName) {
+            if (!obj.name) {
                 swal({
                     title: "QR no valido",
                     text: `Intenta de nuevo o verifica que estas en la aplicacion correcta `,
                     icon: "error"
                 });
-            } else if (obj.eventName && obj.state == "accepted") {
+            } else if (obj.name && obj.state == "accepted") {
                 sendRequest(obj.user, obj.id)
                 swal({
                     title: "Acceso Permitido",
-                    text: `Nombre del Evento: ${obj.eventName} - Nombre del cliente: ${obj.name} - Asistentes: ${obj.people} `,
+                    text: `Nombre del Evento: ${obj.name} - Nombre del cliente: ${obj.name} - Asistentes: ${obj.people} `,
                     icon: "success"
                 });
             }else{
