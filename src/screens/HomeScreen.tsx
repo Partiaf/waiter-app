@@ -112,7 +112,7 @@ const HomeScreen = () => {
         sendRequest(obj.user, obj.id);
         swal({
           title: "Acceso Permitido",
-          text: `Nombre del Evento: ${obj.name} - Nombre del cliente: ${obj.name} - Asistentes: ${obj.people} `,
+          text: `Nombre del Evento: ${obj.name} - Asistentes: ${obj.amount} - Precio: ${obj.price} - Hora: ${obj.hour} `,
           icon: "success",
         });
       } else {
