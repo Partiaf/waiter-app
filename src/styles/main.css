@@ -51,17 +51,31 @@ header button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
     width: 100%;
     padding: 0 1rem;
     padding-bottom: 2rem;
 }
 
+.select-event-container{
+    display: grid;
+    place-items: center;
+}
+.select-event{
+    width: 95%;
+    height: 4rem;
+    margin-top: .5rem;
+    border: 1px solid rgba(0, 0, 0, .15);
+    font-size: 1.6rem;
+    border-radius: .5rem;
+    outline: none;
+}
+
 .order-card {
-    box-shadow: 0 0px 8px rgba(0, 0, 0, .2);
+    /* box-shadow: 0 0px 8px rgba(0, 0, 0, .2); */
     width: 100%;
     border-radius: .5rem;
-    border: none;
+    border: 1px solid rgba(0, 0, 0, .15);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -130,7 +144,7 @@ header button {
 
 
 .login {
-    background: rgba(0, 0, 0, 0.05);
+    background: #fafafa;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -157,13 +171,21 @@ header button {
 
 .logo {
     /* margin-top: 200px; */
-    width: 40%;
+    width: 65%;
+    margin-bottom: 2rem;
+}
+
+.cap{
+    font-weight: 600;
     margin-bottom: 5rem;
+    color: rgb(74, 74, 74);
+    font-size: 1.5rem;
+
 }
 
 .login .input-form {
     background-color: #fff;
-    border-radius: 1rem;
+    border-radius: .5rem;
     border: none;
     height: 3rem;
     width: 90%;
@@ -201,7 +223,7 @@ header button {
 .btn-principal,
 .btn-secondary {
     border: none;
-    border-radius: 1rem;
+    border-radius: .5rem;
     min-width: 75%;
     display: block;
     height: 35px;
@@ -212,7 +234,7 @@ header button {
 .home-buttons .btn-principal {
     width: 90%;
     height: 4.5rem;
-    background-color: #fdbd00;
+    background-color: #FFE243;
     font-weight: 500;
     font-size: 1.4rem;
 }

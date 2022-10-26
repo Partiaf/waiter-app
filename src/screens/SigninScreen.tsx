@@ -40,15 +40,16 @@ export const SigninScreen: React.FunctionComponent<ISigninScreenProps> = (
             src="./logo-partiaf-secondary.svg"
             alt=""
           />
+          <p className="cap">Bienvenido, preparate para atender a los clientes</p>
           {/* <p className="login-copy">Staff</p> */}
           {/* <img className='user-img' src="./img/user-avatar-filled.svg" alt="" /> */}
           <form action="" autoComplete="off">
             <div className="input-form">
-              <i className="bx bx-lock-alt"></i>
+            <i className='bx bx-lock-alt'></i>
               <input
                 className="input-login"
                 type="number"
-                placeholder="Codigo"
+                placeholder="Codigo de ingreso"
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
               />
